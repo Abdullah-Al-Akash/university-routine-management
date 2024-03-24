@@ -32,7 +32,7 @@ const FridayTable = () => {
             backgroundSize: "contain",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-            opacity: 0.15, // Adjust opacity as required
+            opacity: 0.1, // Adjust opacity as required
           }}
         />
 
@@ -209,7 +209,12 @@ const FridayTable = () => {
                   </td>
                   {courses?.["1"]?.courseCode !== courses?.["2"]?.courseCode ? (
                     <td
-                      colSpan={3}
+                      colSpan={`${
+                        courses?.["2"]?.courseCode ===
+                        courses?.["3"]?.courseCode
+                          ? "6"
+                          : "3"
+                      }`}
                       className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px]`}
                     >
                       {courses?.["2"]?.courseCode && (
@@ -261,9 +266,14 @@ const FridayTable = () => {
                     {index === 6 ? "E" : ""} {index === 7 ? "A" : ""}{" "}
                     {index === 8 ? "K" : ""}
                   </td>
-                  {/* Third Two Class */}
+                  {/* After Half Period */}
+                  {/* Number 5 */}
                   <td
-                    colSpan={3}
+                    colSpan={`${
+                      courses?.["5"]?.courseCode === courses?.["6"]?.courseCode
+                        ? "6"
+                        : "3"
+                    }`}
                     className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px] `}
                   >
                     {courses?.["5"]?.courseCode && (
@@ -273,15 +283,13 @@ const FridayTable = () => {
                       </>
                     )}
                   </td>
-
-                  {/* Check 6th and 7th Class */}
                   <td
                     colSpan={`${
                       courses?.["6"]?.courseCode === courses?.["7"]?.courseCode
                         ? "6"
                         : "3"
                     }`}
-                    className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px] `}
+                    className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px]`}
                   >
                     {courses?.["6"]?.courseCode && (
                       <>
@@ -290,7 +298,8 @@ const FridayTable = () => {
                       </>
                     )}
                   </td>
-                  {courses?.["6"]?.courseCode !== courses?.["7"]?.courseCode ? (
+                  {courses?.["6"]?.courseCode !==
+                    courses?.["7"]?.courseCode && (
                     <td
                       colSpan={3}
                       className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px]`}
@@ -303,18 +312,17 @@ const FridayTable = () => {
                         </>
                       )}
                     </td>
-                  ) : (
-                    ""
                   )}
 
-                  {/* Check 8th and 9th class */}
+                  {/* 7 and 8 */}
+
                   <td
                     colSpan={`${
                       courses?.["8"]?.courseCode === courses?.["9"]?.courseCode
                         ? "6"
                         : "3"
                     }`}
-                    className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px] `}
+                    className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px]`}
                   >
                     {courses?.["8"]?.courseCode && (
                       <>
@@ -323,7 +331,8 @@ const FridayTable = () => {
                       </>
                     )}
                   </td>
-                  {courses?.["8"]?.courseCode !== courses?.["9"]?.courseCode ? (
+                  {courses?.["8"]?.courseCode !==
+                    courses?.["9"]?.courseCode && (
                     <td
                       colSpan={3}
                       className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px]`}
@@ -336,10 +345,7 @@ const FridayTable = () => {
                         </>
                       )}
                     </td>
-                  ) : (
-                    ""
                   )}
-                  {/* 10th and 11th class */}
                   <td
                     colSpan={`${
                       courses?.["10"]?.courseCode ===
@@ -347,7 +353,7 @@ const FridayTable = () => {
                         ? "6"
                         : "3"
                     }`}
-                    className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px] `}
+                    className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px]`}
                   >
                     {courses?.["10"]?.courseCode && (
                       <>
@@ -358,7 +364,7 @@ const FridayTable = () => {
                     )}
                   </td>
                   {courses?.["10"]?.courseCode !==
-                  courses?.["11"]?.courseCode ? (
+                    courses?.["11"]?.courseCode && (
                     <td
                       colSpan={3}
                       className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px]`}
@@ -371,54 +377,7 @@ const FridayTable = () => {
                         </>
                       )}
                     </td>
-                  ) : (
-                    ""
                   )}
-                  {/* <td
-                    colSpan={3}
-                    className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px]`}
-                  >
-                    {courses?.["5"]?.courseCode && (
-                      <>
-                        {courses?.["5"]?.courseCode} (
-                        {courses?.["5"]?.courseTitle}) {courses?.["5"]?.teacher}
-                      </>
-                    )}
-                  </td>
-                  <td
-                    colSpan={6}
-                    className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px]`}
-                  >
-                    {courses?.["6"]?.courseCode && (
-                      <>
-                        {courses?.["6"]?.courseCode} (
-                        {courses?.["6"]?.courseTitle}) {courses?.["6"]?.teacher}
-                      </>
-                    )}
-                  </td>
-                  <td
-                    colSpan={6}
-                    className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px]`}
-                  >
-                    {courses?.["8"]?.courseCode && (
-                      <>
-                        {courses?.["8"]?.courseCode} (
-                        {courses?.["8"]?.courseTitle}){courses?.["8"]?.teacher}
-                      </>
-                    )}
-                  </td>
-                  <td
-                    colSpan={6}
-                    className={`px-[16px] border-r-[1px] py-[6px] text-[#000] border-[#000] border-2 text-[14px]`}
-                  >
-                    {courses?.["10"]?.courseCode && (
-                      <>
-                        {courses?.["10"]?.courseCode} (
-                        {courses?.["10"]?.courseTitle}){" "}
-                        {courses?.["10"]?.teacher}
-                      </>
-                    )}
-                  </td> */}
                 </tr>
               );
             })}
